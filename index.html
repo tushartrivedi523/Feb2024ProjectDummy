@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine?</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #fce0db;
+            margin: 50px;
+        }
+        h1 {
+            color: #ff0066;
+        }
+        button {
+            font-size: 20px;
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+        }
+        #yes-button {
+            background-color: #4CAF50; /* Green */
+            color: white;
+        }
+        #no-button {
+            background-color: #FF6347; /* Red */
+            color: white;
+        }
+        #valentine-container {
+            display: none;
+            margin-top: 20px;
+        }
+        #thank-you {
+            display: none;
+            font-size: 40px;
+            font-weight: bold;
+            color: #ff66b2; /* Pink */
+        }
+        #valentine-gif {
+            width: 250px;
+        }
+        #valentine-question {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <img src="https://gifdb.com/images/high/cute-love-bear-roses-ou7zho5oosxnpo6k.gif" alt="Valentine Gif" id="valentine-gif">
+    <h1 id="valentine-question">Will You Be My Valentine?</h1>
+    <button id="yes-button" onclick="answerYes()">Yes</button>
+    <button id="no-button" onclick="answerNo()">No</button>
+
+    <div id="valentine-container">
+        <p id="thank-you">Thank Youuuu! 💖</p>
+        <img src="https://media.tenor.com/gUiu1zyxfzYAAAAi/bear-kiss-bear-kisses.gif" alt="Valentine Gif" width="300"><br>
+        <img src="https://media.giphy.com/media/l9ASXr0TVQCAw/giphy.gif?cid=ecf05e47mkuhwg3kostou9a8u1oi5ja96kngi37lgg6wco84&ep=v1_gifs_search&rid=giphy.gif&ct=g" alt="Valentine Gif" width="300">
+    </div>
+
+    <script>
+        var noMessages = [
+            "Are you sure?",
+            "Really Sure?",
+            "Are you 100% sure?",
+            "Please Please...",
+            "If you say no I will be very sad",
+            "Ok Fine, I will stop asking you now 😞",
+            "Just Kidding, I cant stop asking you out pleaseeeeee",
+            "Pleaseeeee Naaaa",
+            "Please Pleaseee Pleaseee",
+            "Ok this is Final time I am saying please say Yess",
+            "Pakka you wont say?"
+        ];
+
+        var currentMessageIndex = 0;
+
+        function answerYes() {
+            document.getElementById("valentine-gif").style.display = "none";
+            document.getElementById("valentine-question").style.display = "none";
+            document.getElementById("yes-button").style.display = "none";
+            document.getElementById("no-button").style.display = "none";
+
+            document.getElementById("thank-you").style.display = "block";
+            document.getElementById("valentine-container").style.display = "block";
+        }
+
+        function answerNo() {
+            var yesButton = document.getElementById("yes-button");
+            var currentSize = parseInt(window.getComputedStyle(yesButton).fontSize);
+            yesButton.style.fontSize = (currentSize + 4) + "px";
+
+            document.getElementById("no-button").innerHTML = noMessages[currentMessageIndex];
+            currentMessageIndex = (currentMessageIndex + 1) % noMessages.length;
+        }
+    </script>
+</body>
+</html>
